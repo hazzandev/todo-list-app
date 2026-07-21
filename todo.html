@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hassan's To-Do List</title>
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+      }
+
+      h1 {
+        color: #00c896;
+      }
+
+      .inputRow {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      #taskInput {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #333;
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        width: 250px;
+      }
+
+      #btn {
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        background-color: #00c896;
+        color: #121212;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      #btn:hover {
+        background-color: #00a67d;
+      }
+
+      #taskList {
+        list-style: none;
+        padding: 0;
+        width: 300px;
+      }
+
+      #taskList li {
+        background-color: #1e1e1e;
+        padding: 12px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      footer {
+        margin-top: 40px;
+        color: #666;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hassan's To-Do List</h1>
+
+    <div class="inputRow">
+      <input type="text" id="taskInput" placeholder="Enter a task">
+      <button id="btn">Add Task</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <footer>Made by Hassan</footer>
+
+    <script>
+      let input = document.getElementById("taskInput");
+      let button = document.getElementById("btn");
+      let list = document.getElementById("taskList");
+      let tasks = [];
+
+      button.addEventListener("click", function() {
+        let taskText = input.value;
+        let newTask = { text: taskText, done: false };
+        tasks.push(newTask);
+        input.value = "";
+        list.innerHTML = "";
+
+        for (let i = 0; i < tasks.length; i++) {
+          let li = document.createElement("li");
+          li.textContent = tasks[i].text;
+          list.appendChild(li);
+        }
+      });
+    </script>
+  </body>
+</html>
